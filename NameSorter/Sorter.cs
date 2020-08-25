@@ -47,6 +47,9 @@ namespace NameSorter
             _sort = sort ?? Sort;
         }
 
+        /// <summary>
+        /// This method will be called by client to execute the sorting process
+        /// </summary>
         public void Sort()
         {
             var unsortedNames = _getUnsortedNamesList();
@@ -56,6 +59,12 @@ namespace NameSorter
             _saveSortedNames(sortedNames);
         }
 
+        /// <summary>
+        /// Default name sorting implementation. 
+        /// The list of names is sorted by the last name then by the given name.
+        /// </summary>
+        /// <param name="unsortedNames">A enumerable list of unsorted names</param>
+        /// <returns></returns>
         private IEnumerable<string> Sort(IEnumerable<string> unsortedNames)
         {
             const string _delimiter = " ";
@@ -83,6 +92,11 @@ namespace NameSorter
                 .ToList();
         }
 
+        /// <summary>
+        /// Default implementation for getting a list of unsorted names
+        /// </summary>
+        /// <param name="sourceTextFile">The source file to read</param>
+        /// <returns></returns>
         private IEnumerable<string> ReadNamesFromFile(string sourceTextFile)
         {
             if (string.IsNullOrEmpty(sourceTextFile) || !File.Exists(sourceTextFile))
@@ -94,6 +108,11 @@ namespace NameSorter
             return File.ReadLines(sourceTextFile);
         }
 
+        /// <summary>
+        /// Default implementation for saving and displaying the list of sorted names
+        /// </summary>
+        /// <param name="targetFilePath">The file name to be created / overwritten</param>
+        /// <param name="sortedNames">The list of sorted names</param>
         private void SaveNames(string targetFilePath, IEnumerable<string> sortedNames)
         {
             if (sortedNames is null || !sortedNames.Any())
