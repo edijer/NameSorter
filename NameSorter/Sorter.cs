@@ -101,7 +101,7 @@ namespace NameSorter
                 return;
             }
 
-            Console.WriteLine("Sorted Names:");
+            Console.WriteLine("Sorted Names:\n");
             Console.WriteLine(string.Join(Environment.NewLine, sortedNames));
 
             if (string.IsNullOrEmpty(targetFilePath))

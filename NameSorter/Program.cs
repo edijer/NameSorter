@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 namespace NameSorter
@@ -19,7 +20,7 @@ namespace NameSorter
                 Console.WriteLine($"An error occurred. [message: {ex.Message}]");
             }
 
-            Console.WriteLine("Press any key to exit.");
+            Console.WriteLine("\nPress any key to exit.");
             Console.ReadLine();
         }
 
@@ -36,8 +37,9 @@ namespace NameSorter
                     targetFilePath = args[1];
             }
 
-            Console.WriteLine($"Source File: {sourceFilePath}");
-            Console.WriteLine($"Target File: {targetFilePath}");
+            Console.WriteLine($"Source File: {new FileInfo(sourceFilePath).FullName}");
+            Console.WriteLine($"Target File: {new FileInfo(targetFilePath).FullName}");
+            Console.WriteLine();
 
             return (sourceFilePath, targetFilePath);
         }

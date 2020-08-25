@@ -1,6 +1,12 @@
 ﻿# How to Build & Run
 
-
+1. Open a shell to the root folder.
+2. Run `dotnet build` to build the solution.
+2. Navigate to the `NameSorter` folder `cd .\NameSorter\`
+3. Run `dotnet run` to run the project
+  * You can also pass arguments like `dotnet run -- "<source path>" "<target path>"`
+4. Navigate to the `NameSorter.Tests` folder `cd .\NameSorter.Tests\`
+5. Run `dotnet test` to run the tests.
 
 # Assumptions
 
