@@ -1,6 +1,7 @@
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Xunit;
 
 namespace NameSorter.Tests
@@ -149,6 +150,29 @@ namespace NameSorter.Tests
                     "Shelby Nathan Yoder",
                 });
 
+        }
+
+        [Fact]
+        public void Should_Read_And_Save_File()
+        {
+            var sorter = new Sorter(@"unsorted-names-list.txt", @"sorted-names-list.txt");
+            sorter.Sort();
+
+            var sortedNames = File.ReadAllLines(@"sorted-names-list.txt");
+            sortedNames.Should().Equal(new[]
+                {
+                    "Marin Alvarez",
+                    "Adonis Julius Archer",
+                    "Beau Tristan Bentley",
+                    "Hunter Uriah Mathew Clarke",
+                    "Leo Gardner",
+                    "Vaughn Lewis",
+                    "London Lindsey",
+                    "Mikayla Lopez",
+                    "Janet Parsons",
+                    "Frankie Conner Ritter",
+                    "Shelby Nathan Yoder",
+                });
         }
     }
 }
